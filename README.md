@@ -1,6 +1,9 @@
 # Wordle_Bot
 Python bot created with Selenium that can guess the daily Wordle word correct 92.4% of the time.
 
+</img>
+<img src = "wordle.gif", alt = "wordle", height = "720">
+
 It will log onto the wordle website and enter guesses until it gets it right.
 
 I tried a new algorythm works by guessing the five words: quick, brown, shady, cleft, gimps to see what letters in the alphabet are in the actual word.
