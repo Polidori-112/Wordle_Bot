@@ -5,7 +5,7 @@ loc = 0
 for word in file:
     for char in word:
         data = word[loc:loc + 5]
-        loc = loc + 6 #i'm lazy and don't want to format my dictionary (word) document
+        loc = loc + 6
         dict.update({data.lower():''.join(sorted(data.lower()))})
     
 del dict['']   
@@ -114,7 +114,7 @@ def test():
             total = total + 1
         else:
             total = total + 1
-        # 
+    #print results of test
     print('\nNumber Correct: ' + str(correct))
     print('Total: ' + str(total))
     print('Percentage: ' + str(correct / total))
