@@ -21,7 +21,7 @@ def wordle(guess, letters, answ, final, wrong_guess):
         if (answ[c] != guess[c] and (guess[c] == answ[0] or guess[c] == answ[1]
         or guess[c] == answ[2] or guess[c] == answ[3] or guess[c] == answ[4])):
             letters = letters + guess[c]
-            wrong_guess[c] = guess[c]
+            wrong_guess[c].append(guess[c])
             
     return letters
 #remove double letters from a guess
@@ -43,10 +43,11 @@ def jumble(word, dict):
 def remove(guesses, wrong_guess, final):
     for n in range(0, len(guesses)):
         for i in range (0, 5):
-            if ((guesses[n][i] != final[i] or guesses[n][i] == wrong_guess[i])
-            and final[i] != ''):
-                del guesses[n]
-                return 
+            for j in range(0, len(wrong_guess[i])):
+                if ((guesses[n][i] != final[i] and final[i] != '') 
+                or guesses[n][i] == wrong_guess[i][j]):
+                    del guesses[n]
+                    return 
 #add new possible answers to list of possible answers            
 def append_answers(guesses, wrong_guess, final, answers):
     #remove incorrect answers               
@@ -85,7 +86,7 @@ def method(answ):
     #5 words that are guessed before program creates final guess
     words = ['quick', 'brown', 'shady', 'cleft', 'gimps']
     final = ['', '', '', '', '']
-    wrong_guess = ['', '', '', '', '']
+    wrong_guess = [[''], [''], [''], [''], ['']]#there can be multiple wrong guesses at a given value
     answers = []
     #test the words in the array
     for i in range(0, 5):
@@ -98,7 +99,7 @@ def method(answ):
     print(answ)        
     print(answers)
     #used for testing to determine correct percentage
-    if (len(answers) == 1 and answers[0] == answ):
+    if (len(answers) >= 1 and answers[0] == answ):
         return 1
     else:
         return 0
