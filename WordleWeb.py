@@ -1,3 +1,4 @@
+
 import time
 import selenium
 import re
@@ -16,7 +17,6 @@ for word in file:
         dict.update({data.lower():''.join(sorted(data.lower()))})
     
 del dict['']   
-
 
 #remove double letters from a guess
 def clean(let):    
@@ -89,6 +89,8 @@ def method():
         let = clean(let)
     
     check_answers(let, wrong_guess, final, answers)
+    print(wrong_guess)
+    print(final)
     #print feedback on the game        
     print(answers)
     
@@ -132,7 +134,8 @@ def enter_word(word, let, final, wrong_guess):
     matches = ['', '', '', '', '']
     n = 0
     for groups in correctRegex.findall(keydata):
-        matches[n] = (groups[0])
+        if (groups[0] != final[0] and groups[0] != final[1] and groups[0] != final[2] and groups[0] != final[3] and groups[0] != final[4]):
+            matches[n] = (groups[0])
         n = n + 1
         
     presentRegex = re.compile('...............present', re.VERBOSE)
@@ -150,8 +153,10 @@ def enter_word(word, let, final, wrong_guess):
                 final[i] = word[i]
                 let = ''.join((let, final[i]))
             if (word[i] == nearmatches[j]):
-                wrong_guess[i] = word[i]
+                wrong_guess[i].append(word[i])
                 let = ''.join((let, word[i]))
+    print(final)
+    print(wrong_guess)
     return let
 
 #give time for user to cancel and add suspense
