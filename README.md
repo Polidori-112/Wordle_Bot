@@ -18,4 +18,6 @@ If it does not know all 5 letters, then it will attempt to unscramble and solve 
 
 This method allows me to reduce the possible answers to 1 over 90% of the time and guess the correct answer a total of ~97% of the time (by picking a random value from a list of possible values), which I believe is quite good for an automated bot. It is, however, a lesser percentage than a couple of the other bots out there, but better than most and uses a very different approach than all of the bots I have seen. Feel free to build off my code if you want to make a better algorythm. I know a lot of the bots out there have better algorythms, but I wanted to try this idea and actually input the guesses to the website.
 
-The wordleweb.py program runs selenium and inputs guesses to the website, while the wordletest.py program allows you to test different methods and find the percentage that they can work. Anyone is free to use any of this code because I know there are much better algorythyms than mine, just make sure to mention me in your credits. 
+The wordleweb.py program runs selenium and inputs guesses to the website, while the wordletest.py program allows you to test different methods and find the percentage that they can work. Anyone is free to use any of this code because I know there are much better algorythyms than mine.
+
+Also, the OptimalFirstWord file is a side-side project I did to calculate the optimal first word to guess. More details are inside that folder.
