@@ -7,16 +7,21 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
             
 #create dictionary of words
+#key value is word, value is word with letters in alphabetical order to help unscramble letters
+#currently, the list in the repository only has potential answers listed in it
 dict = {}				
 file = open("words.txt", "r")
 loc = 0
 for word in file:
     for char in word:
         data = word[loc:loc + 5]
-        loc = loc + 6 #i'm lazy and don't want to format my dictionary (word) document
+        loc = loc + 6 
         dict.update({data.lower():''.join(sorted(data.lower()))})
     
 del dict['']   
+
+
+#next 4 functions are helper functions for my method (algorithm) function
 
 #remove double letters from a guess
 def clean(let):    
@@ -75,6 +80,7 @@ def check_answers(let, wrong_guess, final, answers):
 #main solving operation
 #guess 5 set words to remove almost all possible letters
 #unscramble the known letters to get possible guess
+#change this function to test your own algorythm
 def method():
     let = ''
     #5 words that are guessed before program creates final guess
@@ -97,6 +103,8 @@ def method():
     return answers[0]
 
 #open wordle website and start playing game
+#change 'Firefox' to 'Chromium' to open with chrome/chromium
+#NOTE: you must download selenium and a web driver to use selenium: https://selenium-python.readthedocs.io/
 browser = webdriver.Firefox()
 browser.get('https://www.powerlanguage.co.uk/wordle/')
 
@@ -108,6 +116,10 @@ Elem.click()
 
 time.sleep(1)
 
+#final array is array of 5 characters consisting of the currently known (green) letters
+#wrong_guess array is array of arrays of currently present (yellow) letters
+#word is the guess to input
+#let is a string of both known and present letters in a meaningless order
 #enters guess into wordle and returns known letters/changes final and wrong_guess arrays
 def enter_word(word, let, final, wrong_guess):
     Elem.send_keys(word)
