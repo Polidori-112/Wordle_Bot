@@ -12,12 +12,18 @@ del dict['']
 
 
 #simulate the wordle game
+#guess is inputed guess into game
+#answ is the 'unknown' solution
+#letters is a string of currently known correct/present (green/yellow) letters in no particular order
+#final and wrong_guess are arrays of letters in their known correct and present positions respectively
 def wordle(guess, letters, answ, final, wrong_guess):
     for c in range (0,5):
+        #append letter if correct
         if (answ[c] == guess[c]):
             letters = letters + guess[c]
             final[c] = guess[c]
         
+        #append letter if incorrect
         if (answ[c] != guess[c] and (guess[c] == answ[0] or guess[c] == answ[1]
         or guess[c] == answ[2] or guess[c] == answ[3] or guess[c] == answ[4])):
             letters = letters + guess[c]
