@@ -1,6 +1,8 @@
 # Wordle_Bot
 Python bot created with Selenium that can guess the daily Wordle word correct 96.8% of the time.
 
+Note: this bot has not been updated to work with the new NYT website. The only real issue with that is that the current accuracy is a good bit lower than 97%
+
 </img>
 <img src = "wordle.gif", alt = "wordle", height = "720">
 
